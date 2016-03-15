@@ -18,11 +18,20 @@ function createTable() {
       var cell = document.createElement("td");
       cell.setAttribute("id", i + "_" + j);
       cell.setAttribute("class", "dead");
+      cell.onclick = cellClickHandler;
       tr.appendChild(cell);
     }
     table.appendChild(tr);
   }
   gridContainer.appendChild(table);
+}
+function cellClickHandler() {
+  var classes = this.getAttribute("class");
+  if (classes.indexOf("live") > -1) {
+    this.setAttribute("class", "dead");
+  } else {
+    this.setAttribute("class", "live");
+  }
 }
 
 window.onload =initialize;
